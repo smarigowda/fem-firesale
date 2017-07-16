@@ -18,7 +18,15 @@ app.on('ready', () => {
 });
 
 const getFileFromUserSelection = () => {
-  const files = dialog.showOpenDialog();
+  const files = dialog.showOpenDialog(mainWindow, {
+    properties: [ 'openFile' ],
+    filters: [
+      { name: 'Text Files', extensions: [ 'txt', 'text' ] },
+      { name: 'Markdown Files', extensions: [ 'md', 'markdown' ] }
+    ]
+  });
+  if(!files) return;
+  const file = files[0];
   console.log(files);
   // debugger;
 };
