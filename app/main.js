@@ -1,4 +1,5 @@
 const { app, BrowserWindow, dialog } = require('electron');
+const fs = require('fs');
 
 let mainWindow = null;
 
@@ -9,7 +10,7 @@ app.on('ready', () => {
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
-    getFileFromUserSelection();
+    // getFileFromUserSelection();
   });
 
   mainWindow.on('closed', () => {
@@ -17,7 +18,7 @@ app.on('ready', () => {
   });
 });
 
-const getFileFromUserSelection = () => {
+global.getFileFromUserSelection = () => {
   const files = dialog.showOpenDialog(mainWindow, {
     properties: [ 'openFile' ],
     filters: [
@@ -27,6 +28,8 @@ const getFileFromUserSelection = () => {
   });
   if(!files) return;
   const file = files[0];
+  const content = fs.readFileSync(file).toString();
+  console.log(content);
   console.log(files);
   // debugger;
 };
