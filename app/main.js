@@ -18,7 +18,7 @@ app.on('ready', () => {
   });
 });
 
-global.getFileFromUserSelection = () => {
+const getFileFromUserSelection = module.exports.getFileFromUserSelection = () => {
   const files = dialog.showOpenDialog(mainWindow, {
     properties: [ 'openFile' ],
     filters: [
