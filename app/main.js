@@ -30,9 +30,9 @@ const getFileFromUserSelection = module.exports.getFileFromUserSelection = () =>
   if(!files) return;
   const file = files[0];
   const content = fs.readFileSync(file).toString();
-  // mainWindow.webContents.send('file-opened', file, content);
+  mainWindow.webContents.send('file-opened', file, content);
   // console.log(content);
   // console.log(files);
   // debugger;
-  return file;
+  // return file;
 };
