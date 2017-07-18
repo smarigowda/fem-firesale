@@ -26,5 +26,5 @@ markdownView.addEventListener('keyup', event => {
 openFileButton.addEventListener('click', event => {
   // alert('ONe day I will open a file');
   // mainProcess.getFileFromUserSelection();
-  getFileFromUserSelection();
+  console.log(getFileFromUserSelection());
 });

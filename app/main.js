@@ -5,6 +5,7 @@ let mainWindow = null;
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({ show: false });
+  let contents = mainWindow.webContents;
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
@@ -29,7 +30,9 @@ const getFileFromUserSelection = module.exports.getFileFromUserSelection = () =>
   if(!files) return;
   const file = files[0];
   const content = fs.readFileSync(file).toString();
-  console.log(content);
-  console.log(files);
+  // mainWindow.webContents.send('file-opened', file, content);
+  // console.log(content);
+  // console.log(files);
   // debugger;
+  return file;
 };
