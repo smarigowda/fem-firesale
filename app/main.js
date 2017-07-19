@@ -28,11 +28,12 @@ const getFileFromUserSelection = module.exports.getFileFromUserSelection = () =>
     ]
   });
   if(!files) return;
-  const file = files[0];
+  return files[0];
+};
+
+const openFile = exports.openFile = filePath => {
+  const file = filePath || getFileFromUserSelection();
   const content = fs.readFileSync(file).toString();
   mainWindow.webContents.send('file-opened', file, content);
-  // console.log(content);
-  // console.log(files);
-  // debugger;
-  // return file;
 };
+
